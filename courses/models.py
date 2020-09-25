@@ -65,7 +65,7 @@ class CourseContentHeadings(models.Model):
     """
     course = models.ForeignKey(Courses, on_delete=models.CASCADE,
                                related_name="course_content_heading")
-    topic_name = models.CharField(max_length=700, unique=True, blank=False,
+    topic_name = models.CharField(max_length=700, blank=False,
                                   null=False, verbose_name='Topic Name')
     topic_name_slug = models.SlugField(max_length=700, editable=False, blank=True, null=True)
     is_active = models.BooleanField(default=True)
@@ -111,7 +111,7 @@ class CourseContentVideos(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['course_heading', 'video_name'],
+            models.UniqueConstraint(fields=['course', 'course_heading', 'video_name'],
                                     name='course_video_unique_to_heading')
         ]
         verbose_name = 'Course Content Video'
