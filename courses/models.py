@@ -65,17 +65,17 @@ class CourseContentHeadings(models.Model):
     """
     course = models.ForeignKey(Courses, on_delete=models.CASCADE,
                                related_name="course_content_heading")
-    topic_name = models.CharField(max_length=191, unique=True, blank=False,
+    topic_name = models.CharField(max_length=1000, unique=True, blank=False,
                                   null=False, verbose_name='Topic Name')
-    topic_name_slug = models.SlugField(max_length=191, editable=False, blank=True, null=True)
+    topic_name_slug = models.SlugField(max_length=1000, editable=False, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
-    # class Meta:
-    #     constraints = [
-    #         models.UniqueConstraint(fields=['course', 'topic_name'], name='topic_unique_to_course')
-    #     ]
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['course', 'topic_name'], name='topic_unique_to_course')
+        ]
 
     def __str__(self):
         return '{} - {}'.format(self.topic_name, self.course.course_name)
@@ -93,8 +93,8 @@ class CourseContentVideos(models.Model):
     course_heading = models.ForeignKey(CourseContentHeadings, on_delete=models.CASCADE,
                                        related_name="course_heading")
 
-    video_name = models.CharField(max_length=191, blank=False, null=False, )
-    video_slug = models.SlugField(max_length=191, editable=False)
+    video_name = models.CharField(max_length=1000, blank=False, null=False, )
+    video_slug = models.SlugField(max_length=1000, editable=False)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -107,8 +107,8 @@ class CourseContentVideos(models.Model):
         self.video_slug = slugify(self.video_name)
         super(CourseContentVideos, self).save(*args, **kwargs)
 
-    # class Meta:
-    #     constraints = [
-    #         models.UniqueConstraint(fields=['course_heading', 'course_video'],
-    #                                 name='course_video_unique_to_heading')
-    #             ]
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['course_heading', 'video_name'],
+                                    name='course_video_unique_to_heading')
+                ]
