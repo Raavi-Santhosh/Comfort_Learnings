@@ -1,0 +1,19 @@
+.logo-font{
+    font-family: 'Sacramento', cursive;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-left: 3rem;
+}
+
+.margin-left-10{
+    margin-left: 6rem;
+}
+
+.title-size{
+    font-size: 2rem;
+}
+
+.nav-pills-style{
+    justify-content: left;
+    margin-left: 2rem;
+}

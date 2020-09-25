@@ -1,0 +1,240 @@
+{% extends 'starter-template.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Off-Canvas Menu-->
+    <div class="offcanvas-container is-triggered offcanvas-container-reverse"
+         id="mobile-menu"><span class="offcanvas-close"><i class="fe-icon-x"></i></span>
+        <div class="px-4 pb-4">
+            <h6>Menu</h6>
+            <div class="d-flex justify-content-around pt-2">
+                <div><a class="btn btn-primary btn-sm btn-block"
+                        href="#"><i class="fe-icon-user"></i>&nbsp;Login</a></div>
+                <div><a class="btn btn-primary btn-sm btn-block"
+                        href="#"></i><i class="fe-icon-user-plus mr-1"></i>Register</a>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-scrollable-area border-top"
+             style="height:calc(100% - 235px); top: 144px;">
+            <!-- Mobile Menu-->
+            <div class="accordion mobile-menu"
+                 id="accordion-menu">
+
+                <!-- Portfolio-->
+                <div class="card">
+                    <div class="card-header"><a class="mobile-menu-link"
+                                                href="#">Course Catalogues</a><a class="collapsed"
+                                                                                 href="#course-submenu"
+                                                                                 data-toggle="collapse"></a></div>
+                    <div class="collapse"
+                         id="course-submenu"
+                         data-parent="#accordion-menu">
+                        <div class="card-body">
+                            <ul>
+                                <li class="dropdown-item"><a href="#">Photography</a>
+                                    <ul class="mobile-sublevel">
+                                        <li class="dropdown-item"><a href="">Lightroom</a></li>
+                                        <li class="dropdown-item"><a href="">Wedding Photography</a></li>
+                                        <li class="dropdown-item"><a href="">Photoshop</a></li>
+                                        <li class="dropdown-item"><a href="">Photography</a></li>
+                                        <li class="dropdown-item"><a href="">Video</a></li>
+                                        <li class="dropdown-item"><a href="">Smartphone Photography</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item"><a href="#">Marketing</a>
+                                    <ul class="mobile-sublevel">
+                                        <li class="dropdown-item"><a href="">Digital Marketing</a></li>
+                                        <li class="dropdown-item"><a href="">Social Media Marketing</a></li>
+                                        <li class="dropdown-item"><a href="">Creative Writing</a></li>
+                                        <li class="dropdown-item"><a href="">Digital Marketing & SEO</a></li>
+                                        <li class="dropdown-item"><a href="">Blogging & Content Writing</a></li>
+                                        <li class="dropdown-item"><a href="">Viral Marketing</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item"><a href="#">Technology</a>
+                                    <ul class="mobile-sublevel">
+                                        <li class="dropdown-item"><a href="">Project Management</a></li>
+                                        <li class="dropdown-item"><a href="">Cryptocurrency</a></li>
+                                        <li class="dropdown-item"><a href="">Graphic Design</a></li>
+                                        <li class="dropdown-item"><a href="">Photoshop</a></li>
+                                        <li class="dropdown-item"><a href="">Coding & Technology</a></li>
+                                        <li class="dropdown-item"><a href="">Data Analytics</a></li>
+                                        <li class="dropdown-item"><a href="">Mobile App Development</a></li>
+                                        <li class="dropdown-item"><a href="">Web Development</a></li>
+                                        <li class="dropdown-item"><a href="">Coding for Kids</a></li>
+                                        <li class="dropdown-item"><a href="">Web Design</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Knowledge Share-->
+                <div class="card">
+                    <div class="card-header"><a class="mobile-menu-link"
+                                                href="#">Knowledge Share</a></div>
+                </div>
+                <!-- Live Sessions-->
+                <div class="card">
+                    <div class="card-header"><a class="mobile-menu-link"
+                                                href="#">Live Sessions</a></div>
+                </div>
+                <!-- Projects-->
+                <div class="card">
+                    <div class="card-header"><a class="mobile-menu-link"
+                                                href="#">Projects</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-footer px-4 pt-3 pb-2 text-center"><a class="social-btn sb-style-3 sb-twitter"
+                                                                    href="#"><i class="socicon-twitter"></i></a><a class="social-btn sb-style-3 sb-facebook"
+                                                                                                                   href="#"><i class="socicon-facebook"></i></a><a class="social-btn sb-style-3 sb-pinterest"
+                                                                                                                                                                   href="#"><i class="socicon-pinterest"></i></a><a class="social-btn sb-style-3 sb-instagram"
+                                                                                                                                                                                                                    href="#"><i class="socicon-instagram"></i></a>
+        </div>
+    </div>
+    <!-- Navbar: Simple Wide-->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+    <header class="navbar-wrapper navbar-boxed navbar-ghost-whit">
+        <div class="container-fluid">
+            <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1 text-accent logo-font"
+                                                              href="{% url 'courses:home' %}">Comfort Learnings</a>
+            </div>
+            <div class="d-table-cell w-100 align-middle pl-md-3">
+                <div class="navbar justify-content-end justify-content-lg-between">
+                    <!-- Search-->
+                    <!--            <form class="search-box" method="get">-->
+                    <!--              <input type="text" id="site-search" placeholder="Type A or C to see suggestions"><span class="search-close"><i class="fe-icon-x"></i></span>-->
+                    <!--            </form>-->
+                    <!-- Main Menu-->
+                    <ul class="navbar-nav d-none d-lg-block margin-left-10">
+
+                        <!-- Course Catalogue-->
+                        <li class="nav-item dropdown-toggle"><a class="nav-link"
+                                                                href="#"><i class="fe-icon-box mr-1"></i>Course
+                            Catalogue</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item has-children"><a href="#">Photography</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="">Lightroom</a></li>
+                                        <li class="dropdown-item"><a href="">Wedding Photography</a></li>
+                                        <li class="dropdown-item"><a href="">Photoshop</a></li>
+                                        <li class="dropdown-item"><a href="">Photography</a></li>
+                                        <li class="dropdown-item"><a href="">Video</a></li>
+                                        <li class="dropdown-item"><a href="">Smartphone Photography</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item has-children"><a href="#">Marketing</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="">Digital Marketing</a></li>
+                                        <li class="dropdown-item"><a href="">Social Media Marketing</a></li>
+                                        <li class="dropdown-item"><a href="">Creative Writing</a></li>
+                                        <li class="dropdown-item"><a href="">Digital Marketing & SEO</a></li>
+                                        <li class="dropdown-item"><a href="">Blogging & Content Writing</a></li>
+                                        <li class="dropdown-item"><a href="">Viral Marketing</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown-item has-children"><a href="#">Technology</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="">Project Management</a></li>
+                                        <li class="dropdown-item"><a href="">Cryptocurrency</a></li>
+                                        <li class="dropdown-item"><a href="">Graphic Design</a></li>
+                                        <li class="dropdown-item"><a href="">Photoshop</a></li>
+                                        <li class="dropdown-item"><a href="">Coding & Technology</a></li>
+                                        <li class="dropdown-item"><a href="">Data Analytics</a></li>
+                                        <li class="dropdown-item"><a href="">Mobile App Development</a></li>
+                                        <li class="dropdown-item"><a href="">Web Development</a></li>
+                                        <li class="dropdown-item"><a href="">Coding for Kids</a></li>
+                                        <li class="dropdown-item"><a href="">Web Design</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Knowledge Share-->
+                        <li class="nav-item"><a class="nav-link"
+                                                href="#">Knowledge Share</a></li>
+
+                        <!-- Live Sessions-->
+                        <li class="nav-item"><a class="nav-link"
+                                                href="#">Live Sessions</a></li>
+
+                        <!-- Projects-->
+                        <li class="nav-item"><a class="nav-link"
+                                                href="#">Projects</a></li>
+
+                        <!-- Doubts Forum-->
+                        <li class="nav-item"><a class="nav-link"
+                                                href="#">Doubts Forum</a></li>
+                    </ul>
+                    <div>
+                        <ul class="navbar-buttons d-inline-block align-middle">
+                            <li class="d-block d-lg-none"><a href="#mobile-menu"
+                                                             data-toggle="offcanvas"><i class="fe-icon-menu"></i></a>
+                            </li>
+                            <!--                <li><a href="#" data-toggle="search"><i class="fe-icon-search"></i></a></li>-->
+                        </ul>
+                        <a class="btn btn-style-4 btn-accent ml-3 d-none d-xl-inline-block"
+                           href=""
+                           target=""><i class="fe-icon-user mr-1"></i>Login</a>
+                        <a class="btn btn-style-4 btn-accent ml-3 d-none d-xl-inline-block"
+                           href=""
+                           target=""><i class="fe-icon-user-plus mr-1"></i>Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="owl-carousel dots-inside controls-hidden-mobile"
+             data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
+        <div class="bg-cover bg-center bg-no-repeat py-5"
+             style="background-image: url(img/index/hero-slide01.jpg);"><span class="bg-overlay"></span>
+            <div class="container bg-content py-md-5">
+                <div class="row justify-content-center py-md-5">
+                    <div class="col-12 text-center py-md-5">
+                        <div class="d-table w-100 bg-no-repeat bg-center"
+                             style="min-height: 448px; background-size: 452px 448px; background-image: url(img/index/hero-slide-shape01.png);">
+                            <div class="d-table-cell align-middle">
+                                <h2 class="display-4 text-white"><em class='font-weight-light'>Focusing on</em>
+                                    Excellence
+                                </h2>
+                                <p class="text-xl text-white opacity-75 pb-4">At vero eos et accusamus et iusto odio
+                                    dignissimos ducimus qui blanditiis</p><a class="btn btn-style-4 btn-light"
+                                                                             href="#">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-cover bg-center bg-no-repeat py-5"
+             style="background-image: url(img/index/hero-slide02.jpg);"><span class="bg-overlay"
+                                                                              style="opacity: .55;"></span>
+            <div class="container bg-content py-md-5">
+                <div class="row justify-content-center py-md-5">
+                    <div class="col-12 text-center py-md-5">
+                        <div class="d-table w-100 bg-no-repeat bg-center"
+                             style="min-height: 448px; background-size: 452px 448px; background-image: url(img/index/hero-slide-shape02.png);">
+                            <div class="d-table-cell align-middle">
+                                <h2 class="display-4 text-white"><em class='font-weight-light'>Focusing on</em>
+                                    Performance
+                                </h2>
+                                <p class="text-xl text-white opacity-75 pb-4">At vero eos et accusamus et iusto odio
+                                    dignissimos ducimus qui blanditiis</p><a class="btn btn-style-4 btn-light"
+                                                                             href="#">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

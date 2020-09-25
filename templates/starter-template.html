@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Comfort Learnings</title>
+
+
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="{% static "css/vendor.min.css" %}">
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="{% static "css/theme.min.css" %}">
+    <!-- Modernizr-->
+    <script src="{% static "js/modernizr.min.js" %}"></script>
+
+    <!-- custom styles-->
+    <link rel="stylesheet" media="screen" href="{% static "css/styles.css" %}">
+</head>
+<!-- Body-->
+<body>
+{% block content %}
+
+
+
+{% endblock %}
+
+<script src="{% static "js/vendor.min.js" %}"></script>
+<script src="{% static "js/theme.min.js" %}"></script>
+</body>
+</html>
