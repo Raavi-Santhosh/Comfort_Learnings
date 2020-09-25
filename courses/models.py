@@ -24,7 +24,7 @@ class CourseCatalogue(models.Model):
         return self.category_name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.category_name)
+        self.category_name_slug = slugify(self.category_name)
         super(CourseCatalogue, self).save(*args, **kwargs)
 
 
@@ -34,7 +34,7 @@ class Courses(models.Model):
         foreign key pointing to CourseCatalogue model
     """
     course_category = models.ForeignKey(CourseCatalogue, on_delete=models.CASCADE,
-                                        related_name='courses') # related_name is used to get reverse relationship
+                                        related_name='courses')  # related_name is used to get reverse relationship
     course_name = models.CharField(max_length=100, unique=True, blank=False, null=False,
                                    verbose_name='Course Name', db_column='course_name')
     course_name_slug = models.SlugField(max_length=100, blank=True, null=True, editable=False)
@@ -43,13 +43,13 @@ class Courses(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.course_name)
+        self.course_name_slug = slugify(self.course_name)
         super(Courses, self).save(*args, **kwargs)
 
     def get_course_url(self):
         """Creating to get dynamic urls for specific courses using reverse"""
-        return reverse('courses:course', args=[self.course_category.slug,
-                                               self.slug])
+        return reverse('courses:course', args=[self.course_category.category_name_slug,
+                                               self.course_name_slug])
 
     def __str__(self):
         return '{} - {}'.format(self.course_name, self.course_category.category_name)
@@ -65,9 +65,9 @@ class CourseContentHeadings(models.Model):
     """
     course = models.ForeignKey(Courses, on_delete=models.CASCADE,
                                related_name="course_content_heading")
-    topic_name = models.CharField(max_length=1000, unique=True, blank=False,
+    topic_name = models.CharField(max_length=700, unique=True, blank=False,
                                   null=False, verbose_name='Topic Name')
-    topic_name_slug = models.SlugField(max_length=1000, editable=False, blank=True, null=True)
+    topic_name_slug = models.SlugField(max_length=700, editable=False, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -76,6 +76,8 @@ class CourseContentHeadings(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['course', 'topic_name'], name='topic_unique_to_course')
         ]
+        verbose_name = 'Course Content Heading'
+        verbose_name_plural = 'Course Content Headings'
 
     def __str__(self):
         return '{} - {}'.format(self.topic_name, self.course.course_name)
@@ -93,8 +95,8 @@ class CourseContentVideos(models.Model):
     course_heading = models.ForeignKey(CourseContentHeadings, on_delete=models.CASCADE,
                                        related_name="course_heading")
 
-    video_name = models.CharField(max_length=1000, blank=False, null=False, )
-    video_slug = models.SlugField(max_length=1000, editable=False)
+    video_name = models.CharField(max_length=700, blank=False, null=False, )
+    video_slug = models.SlugField(max_length=700, editable=False)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -111,4 +113,6 @@ class CourseContentVideos(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['course_heading', 'video_name'],
                                     name='course_video_unique_to_heading')
-                ]
+        ]
+        verbose_name = 'Course Content Video'
+        verbose_name_plural = 'Course Content Videos'

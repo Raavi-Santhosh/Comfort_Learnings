@@ -1,8 +1,7 @@
 {% extends 'starter-template.html' %}
 {% load static %}
 
-{% block content %}
-
+{% block nav_bar %}
     <!-- Off-Canvas Menu-->
     <div class="offcanvas-container is-triggered offcanvas-container-reverse"
          id="mobile-menu"><span class="offcanvas-close"><i class="fe-icon-x"></i></span>
@@ -39,8 +38,8 @@
                                             {% for course in cat.courses.all %}
                                                 {% if course.is_active %}
                                                     <li class="dropdown-item">
-                                                    <a href="{{ course.get_course_url }}">{{ course.course_name }}</a>
-                                                </li>
+                                                        <a href="{{ course.get_course_url }}">{{ course.course_name }}</a>
+                                                    </li>
                                                 {% endif %}
 
                                             {% endfor %}
@@ -105,8 +104,8 @@
                                             {% for course in cat.courses.all %}
                                                 {% if course.is_active %}
                                                     <li class="dropdown-item">
-                                                    <a href="{{ course.get_course_url }}">{{ course.course_name }}</a>
-                                                </li>
+                                                        <a href="{{ course.get_course_url }}">{{ course.course_name }}</a>
+                                                    </li>
                                                 {% endif %}
                                             {% endfor %}
                                         </ul>
@@ -149,49 +148,4 @@
             </div>
         </div>
     </header>
-
-    <section class="owl-carousel dots-inside controls-hidden-mobile"
-             data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
-        <div class="bg-cover bg-center bg-no-repeat py-5"
-             style="background-image: url({% static "img/index/hero-slide01.jpg" %});"><span class="bg-overlay"></span>
-            <div class="container bg-content py-md-5">
-                <div class="row justify-content-center py-md-5">
-                    <div class="col-12 text-center py-md-5">
-                        <div class="d-table w-100 bg-no-repeat bg-center"
-                             style="min-height: 448px; background-size: 452px 448px; background-image: url({% static "img/index/hero-slide-shape01.png" %});">
-                            <div class="d-table-cell align-middle">
-                                <h2 class="display-4 text-white"><em class='font-weight-light'>Focusing on</em>
-                                    Excellence
-                                </h2>
-                                <p class="text-xl text-white opacity-75 pb-4">At vero eos et accusamus et iusto odio
-                                    dignissimos ducimus qui blanditiis</p><a class="btn btn-style-4 btn-light"
-                                                                             href="#">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bg-cover bg-center bg-no-repeat py-5"
-             style="background-image: url({% static "img/index/hero-slide02.jpg" %});"><span class="bg-overlay" style="opacity: .55;"></span>
-            <div class="container bg-content py-md-5">
-                <div class="row justify-content-center py-md-5">
-                    <div class="col-12 text-center py-md-5">
-                        <div class="d-table w-100 bg-no-repeat bg-center"
-                             style="min-height: 448px; background-size: 452px 448px; background-image: url({% static "img/index/hero-slide-shape02.png" %});">
-                            <div class="d-table-cell align-middle">
-                                <h2 class="display-4 text-white"><em class='font-weight-light'>Focusing on</em>
-                                    Performance
-                                </h2>
-                                <p class="text-xl text-white opacity-75 pb-4">At vero eos et accusamus et iusto odio
-                                    dignissimos ducimus qui blanditiis</p><a class="btn btn-style-4 btn-light"
-                                                                             href="#">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
 {% endblock %}
