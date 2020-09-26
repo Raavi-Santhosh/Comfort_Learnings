@@ -91,9 +91,9 @@ class CourseContentVideos(models.Model):
     """
         This model is to store the course videos
     """
-    course = models.ForeignKey(Courses, on_delete=models.CASCADE, related_name="course_content_video")
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE, related_name="course_content_videos")
     course_heading = models.ForeignKey(CourseContentHeadings, on_delete=models.CASCADE,
-                                       related_name="course_heading")
+                                       related_name="course_heading_videos")
 
     video_name = models.CharField(max_length=700, blank=False, null=False, )
     video_slug = models.SlugField(max_length=700, editable=False)

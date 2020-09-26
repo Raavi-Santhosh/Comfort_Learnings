@@ -3,12 +3,12 @@
 
 {% block content %}
 
-    <div class="container-fluid bg-danger-faded text-left text-dark py-1 title-size"><strong>Course Title</strong> </div>
+    <div class="container-fluid bg-danger-faded text-left text-dark py-1 title-size"><strong>{{ course_title }}</strong> </div>
     <div class="container-fluid p-0 m-0">
         <div class="row">
             <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 p-0 m-0">
                 <div class="embed-responsive embed-responsive-16by9 mb-3">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qPJHB4EXwgw"
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AhRc4I5CNAA"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                 </div>
@@ -69,47 +69,33 @@
                 <div class="accordion border-left" id="accordion1">
                     <div><h6 class="block-title text-center mt-2">Course Content</h6></div>
                     <!-- Card -->
-                    <div class="card">
+
+                    {% for course_heading in course_headings %}
+                        <div class="card">
                         <div class="card-header">
                             <h6>
-                                <a class="collapsed" href="#collapseOne" data-toggle="collapse">
-                                    <i class="fe-icon-volume-2"></i>Collapsible Group Item #1
+                                <a class="collapsed" href="#collapse{{ forloop.counter }}" data-toggle="collapse">
+                                    {{ course_heading.topic_name }}
                                 </a>
                             </h6>
                         </div>
-                        <div class="collapse" id="collapseOne" data-parent="#accordion1">
+                        <div class="collapse" id="collapse{{ forloop.counter }}" data-parent="#accordion1">
                             <div class="card-body">
                                 <nav class="list-group">
-                                    <a class="list-group-item" href="#">Cras justo odio</a>
-                                    <a class="list-group-item " href="#">Dapibus ac facilisis (active)</a>
-                                    <a class="list-group-item" href="#">Morbi leo risus</a>
-                                    <a class="list-group-item " href="#">Vestibulum at eros (disabled)</a></nav>
+
+                                    {% for video in course_heading.course_heading_videos.all %}
+                                        {% if video.is_active %}
+                                            <a class="list-group-item" href="#">{{ video.video_name }}</a>
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                </nav>
                             </div>
                         </div>
                     </div>
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h6>
-                                <a class="collapsed" href="#collapseThree" data-toggle="collapse">
-                                    <i class="fe-icon-mic"></i>Collapsible Group Item #3
-                                </a>
-                            </h6>
-                        </div>
-                        <div class="collapse" id="collapseThree" data-parent="#accordion1">
-                            <div class="card-body">
-                                <div class="opacity-75">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                    terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                    brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                                    anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                    accusamus dolores eos qui ratione voluptatem.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>
