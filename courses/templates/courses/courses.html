@@ -1,14 +1,14 @@
 {% extends 'starter-template.html' %}
 {% load static %}
-
+{% load nav_bar %}
 {% block content %}
-
-    <div class="container-fluid bg-danger-faded text-left text-dark py-1 title-size"><strong>{{ course_title }}</strong> </div>
+    {% nav_bar_tag %}
+    <div class="container-fluid bg-danger-faded text-left text-dark py-1 title-size"><strong>{{ course.course_name }}</strong> </div>
     <div class="container-fluid p-0 m-0">
         <div class="row">
             <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 p-0 m-0">
                 <div class="embed-responsive embed-responsive-16by9 mb-3">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AhRc4I5CNAA"
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ link }}"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                 </div>
@@ -85,7 +85,7 @@
 
                                     {% for video in course_heading.course_heading_videos.all %}
                                         {% if video.is_active %}
-                                            <a class="list-group-item" href="#">{{ video.video_name }}</a>
+                                            <a class="list-group-item" href="{{ video.get_video_url }}">{{ video.video_name }}</a>
                                         {% endif %}
 
                                     {% endfor %}

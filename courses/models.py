@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+import uuid
 
 
 class CourseCatalogue(models.Model):
@@ -97,9 +98,11 @@ class CourseContentVideos(models.Model):
 
     video_name = models.CharField(max_length=700, blank=False, null=False, )
     video_slug = models.SlugField(max_length=700, editable=False)
+    video_link = models.CharField(max_length=250, null=True, blank=True, default='no-link')
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+    video_uid = models.UUIDField(editable=False, null=True, blank=True, default=uuid.uuid4, unique=True)
 
     def __str__(self):
         return '{} - {} - {}'.format(self.video_name, self.course_heading.topic_name,
@@ -108,6 +111,12 @@ class CourseContentVideos(models.Model):
     def save(self, *args, **kwargs):
         self.video_slug = slugify(self.video_name)
         super(CourseContentVideos, self).save(*args, **kwargs)
+
+    def get_video_url(self):
+        cat = self.course.course_category.category_name_slug
+        crs = self.course.course_name_slug
+        link = self.video_uid
+        return reverse('courses:course_videos', args=[cat, crs, link])
 
     class Meta:
         constraints = [
