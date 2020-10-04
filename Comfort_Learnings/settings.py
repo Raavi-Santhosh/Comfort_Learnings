@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     # Third-party Apps
 
     # Local Apps
-    'courses.apps.CoursesConfig'
+    'courses.apps.CoursesConfig',
+    'accounts.apps.AccountsConfig',
+
+    
 ]
 
 MIDDLEWARE = [

@@ -9,9 +9,9 @@
             <h6>Menu</h6>
             <div class="d-flex justify-content-around pt-2">
                 <div><a class="btn btn-primary btn-sm btn-block"
-                        href="#"><i class="fe-icon-user"></i>&nbsp;Login</a></div>
+                        href="{% url 'accounts:login' %}"><i class="fe-icon-user"></i>&nbsp;Login</a></div>
                 <div><a class="btn btn-primary btn-sm btn-block"
-                        href="#"></i><i class="fe-icon-user-plus mr-1"></i>Register</a>
+                        href="#"><i class="fe-icon-user-plus mr-1"></i>Register</a>
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@
                             <!--                <li><a href="#" data-toggle="search"><i class="fe-icon-search"></i></a></li>-->
                         </ul>
                         <a class="btn btn-style-4 btn-accent ml-3 d-none d-xl-inline-block"
-                           href=""
+                           href="{% url 'accounts:login' %}"
                            target=""><i class="fe-icon-user mr-1"></i>Login</a>
                         <a class="btn btn-style-4 btn-accent ml-3 d-none d-xl-inline-block"
                            href=""
